@@ -22,9 +22,15 @@ function playRound(playerSelection, computerSelection) {
         return 'You win! Paper beats Rock';
     } else if(playerSelectionCaps === 'SCISSORS' && computerSelectionCaps == 'PAPER') {
         return 'You win! Scissors beats paper';
+    } else if(playerSelectionCaps === 'SCISSORS' && computerSelectionCaps == 'ROCK') {
+        return 'You lose! Rock beats Scissors';
+    } else if(playerSelectionCaps === 'PAPER' && computerSelectionCaps === 'SCISSORS') {
+        return 'You lose! Scissors beats paper';
+    } else if(playerSelectionCaps === 'ROCK' && computerSelectionCaps === 'PAPER') {
+        return 'You lose! Paper beats Rock';
     }
 }
 
-const playerSelection = 'paper';
-const computerSelection = 'rock';
+const playerSelection = 'rock';
+const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
