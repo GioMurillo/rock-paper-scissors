@@ -12,7 +12,17 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-
+    let playerSelectionCaps = playerSelection.toUpperCase();
+    let computerSelectionCaps = computerSelection.toUpperCase();
+    if(playerSelectionCaps === computerSelectionCaps) {
+        return 'Tie! Keep it going!';
+    } else if(playerSelectionCaps === 'ROCK' && computerSelectionCaps === 'SCISSORS') {
+        return 'You win! Rock beats Scissors';
+    } else if(playerSelectionCaps === 'PAPER' && computerSelectionCaps === 'ROCK') {
+        return 'You win! Paper beats Rock';
+    } else if(playerSelectionCaps === 'SCISSORS' && computerSelectionCaps == 'PAPER') {
+        return 'You win! Scissors beats paper';
+    }
 }
 
 const playerSelection = 'paper';
