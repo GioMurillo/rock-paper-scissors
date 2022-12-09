@@ -15,19 +15,29 @@ function playRound(playerSelection, computerSelection) {
   let playerSelectionCaps = playerSelection.toUpperCase();
   let computerSelectionCaps = computerSelection.toUpperCase();
   if(playerSelectionCaps === computerSelectionCaps) {
-      return 'Tie! Keep it going!';
+      console.log('Tie! Keep it going!');
+      return 0;
   } else if(playerSelectionCaps === 'ROCK' && computerSelectionCaps === 'SCISSORS') {
-      return 'You win! Rock beats Scissors';
+      console.log('You win! Rock beats Scissors');
+      return 1;
   } else if(playerSelectionCaps === 'PAPER' && computerSelectionCaps === 'ROCK') {
-      return 'You win! Paper beats Rock';
+      console.log('You win! Paper beats Rock');
+      return 1;
   } else if(playerSelectionCaps === 'SCISSORS' && computerSelectionCaps == 'PAPER') {
-      return 'You win! Scissors beats paper';
+      console.log('You win! Scissors beats paper');
+      return 1;
   } else if(playerSelectionCaps === 'SCISSORS' && computerSelectionCaps == 'ROCK') {
-      return 'You lose! Rock beats Scissors';
+      console.log('You lose! Rock beats Scissors');
+      return 0;
   } else if(playerSelectionCaps === 'PAPER' && computerSelectionCaps === 'SCISSORS') {
-      return 'You lose! Scissors beats paper';
+      console.log('You lose! Scissors beats paper');
+      return 0;
   } else if(playerSelectionCaps === 'ROCK' && computerSelectionCaps === 'PAPER') {
-      return 'You lose! Paper beats Rock';
+      console.log('You lose! Paper beats Rock');
+      return 0;
+  } else {
+      console.log('Invalid choice. You lose this round')
+    return 0;
   }
 }
 
@@ -38,7 +48,12 @@ function game() {
   for (let i = 0; i <5; i++) {
     playerSelection = prompt('Enter rock, paper, or scissors', 'rock');
     computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+    winCount += playRound(playerSelection, computerSelection);
+  }
+  if (winCount >= 3) {
+    console.log('You win this 5 round game!');
+  } else {
+    console.log('You lost this 5 round game!');
   }
 }
 
