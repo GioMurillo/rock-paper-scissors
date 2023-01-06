@@ -56,9 +56,3 @@ function game() {
     console.log('You lost this 5 round game!');
   }
 }
-
-
-
-// const playerSelection = 'rock';
-// const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection));
