@@ -1,6 +1,3 @@
-// Adding comment to check what branch I am on
-// This is so cool
-
 function getComputerChoice() {
   let computerChoice = Math.floor(Math.random() * 3) + 1;
   if(computerChoice === 1) {
@@ -48,14 +45,14 @@ function game() {
   let playerSelection = '';
   let computerSelection = '';
   let winCount = 0;
-  for (let i = 0; i <5; i++) {
+  // for (let i = 0; i <5; i++) {
     playerSelection = prompt('Enter rock, paper, or scissors', 'rock');
     computerSelection = getComputerChoice();
-    winCount += playRound(playerSelection, computerSelection);
-  }
-  if (winCount >= 3) {
-    console.log('You win this 5 round game!');
-  } else {
-    console.log('You lost this 5 round game!');
-  }
+    // winCount += playRound(playerSelection, computerSelection);
+  // }
+  // if (winCount >= 3) {
+  //   console.log('You win this 5 round game!');
+  // } else {
+  //   console.log('You lost this 5 round game!');
+  // }
 }
