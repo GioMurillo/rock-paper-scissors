@@ -1,3 +1,6 @@
+// Adding comment to check what branch I am on
+// This is so cool
+
 function getComputerChoice() {
   let computerChoice = Math.floor(Math.random() * 3) + 1;
   if(computerChoice === 1) {
