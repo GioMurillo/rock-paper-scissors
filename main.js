@@ -56,3 +56,8 @@ function game() {
   //   console.log('You lost this 5 round game!');
   // }
 }
+
+window.addEventListener("click", e => console.log(e));
+
+const selections = document.querySelectorAll("button");
+console.log(selections);
