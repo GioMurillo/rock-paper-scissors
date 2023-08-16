@@ -1,38 +1,37 @@
 function getComputerChoice() {
   let computerChoice = Math.floor(Math.random() * 3) + 1;
   if(computerChoice === 1) {
-    return 'Rock';
+    return 'ROCK';
   } else if(computerChoice === 2) {
-    return 'Paper';
+    return 'PAPER';
   } else if(computerChoice === 3) {
-    return 'Scissors';
+    return 'SCISSORS';
   } else {
     return 'Incorrect computerChoice value';
   }
 }
 
-function playRound(playerSelection, computerSelection) {
-  let playerSelectionCaps = playerSelection.toUpperCase();
-  let computerSelectionCaps = computerSelection.toUpperCase();
-  if(playerSelectionCaps === computerSelectionCaps) {
+function playRound(playerSelection) {
+  let computerSelection = getComputerChoice();
+  if(playerSelection === computerSelection) {
       console.log('Tie! Keep it going!');
       return 0;
-  } else if(playerSelectionCaps === 'ROCK' && computerSelectionCaps === 'SCISSORS') {
+  } else if(playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
       console.log('You win! Rock beats Scissors');
       return 1;
-  } else if(playerSelectionCaps === 'PAPER' && computerSelectionCaps === 'ROCK') {
+  } else if(playerSelection === 'PAPER' && computerSelection === 'ROCK') {
       console.log('You win! Paper beats Rock');
       return 1;
-  } else if(playerSelectionCaps === 'SCISSORS' && computerSelectionCaps == 'PAPER') {
+  } else if(playerSelection === 'SCISSORS' && computerSelection == 'PAPER') {
       console.log('You win! Scissors beats paper');
       return 1;
-  } else if(playerSelectionCaps === 'SCISSORS' && computerSelectionCaps == 'ROCK') {
+  } else if(playerSelection === 'SCISSORS' && computerSelection == 'ROCK') {
       console.log('You lose! Rock beats Scissors');
       return 0;
-  } else if(playerSelectionCaps === 'PAPER' && computerSelectionCaps === 'SCISSORS') {
+  } else if(playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
       console.log('You lose! Scissors beats paper');
       return 0;
-  } else if(playerSelectionCaps === 'ROCK' && computerSelectionCaps === 'PAPER') {
+  } else if(playerSelection === 'ROCK' && computerSelection === 'PAPER') {
       console.log('You lose! Paper beats Rock');
       return 0;
   } else {
@@ -58,11 +57,17 @@ function game() {
 }
 */
 
-const selections = document.querySelectorAll("button");
-// selections.forEach(element => {
-//   console.log(element.value)
-// });
-//console.log(selections.value);
-window.addEventListener("click", e => {
-  console.log(e);
+const selections = Array.from(document.querySelectorAll("button"));
+selections.forEach(selection => {
+  selection.addEventListener('click', e => playRound(e.target.value));
 });
+
+
+
+window.addEventListener('click', e => {
+  //console.log(e);
+  //playRound();
+});
+
+
+// document.getElementById('rock-button').addEventListener('click', e => playRound(e.target.value));
