@@ -40,24 +40,29 @@ function playRound(playerSelection, computerSelection) {
     return 0;
   }
 }
-
+/* game() not needed for UI style
 function game() {
   let playerSelection = '';
   let computerSelection = '';
   let winCount = 0;
-  // for (let i = 0; i <5; i++) {
+  for (let i = 0; i <5; i++) {
     playerSelection = prompt('Enter rock, paper, or scissors', 'rock');
     computerSelection = getComputerChoice();
-    // winCount += playRound(playerSelection, computerSelection);
-  // }
-  // if (winCount >= 3) {
-  //   console.log('You win this 5 round game!');
-  // } else {
-  //   console.log('You lost this 5 round game!');
-  // }
+    winCount += playRound(playerSelection, computerSelection);
+  }
+  if (winCount >= 3) {
+    console.log('You win this 5 round game!');
+  } else {
+    console.log('You lost this 5 round game!');
+  }
 }
-
-window.addEventListener("click", e => console.log(e));
+*/
 
 const selections = document.querySelectorAll("button");
-console.log(selections);
+// selections.forEach(element => {
+//   console.log(element.value)
+// });
+//console.log(selections.value);
+window.addEventListener("click", e => {
+  console.log(e);
+});
