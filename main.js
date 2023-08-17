@@ -1,3 +1,5 @@
+let winCount = 0;
+
 function getComputerChoice() {
   let computerChoice = Math.floor(Math.random() * 3) + 1;
   if(computerChoice === 1) {
@@ -14,28 +16,28 @@ function getComputerChoice() {
 function playRound(playerSelection) {
   let computerSelection = getComputerChoice();
   if(playerSelection === computerSelection) {
-      console.log('Tie! Keep it going!');
+      document.getElementById('results').innerHTML = ('Tie! Keep it going!');
       return 0;
   } else if(playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
-      console.log('You win! Rock beats Scissors');
+      document.getElementById('results').innerHTML = ('You win! Rock beats Scissors');
       return 1;
   } else if(playerSelection === 'PAPER' && computerSelection === 'ROCK') {
-      console.log('You win! Paper beats Rock');
+      document.getElementById('results').innerHTML = ('You win! Paper beats Rock');
       return 1;
   } else if(playerSelection === 'SCISSORS' && computerSelection == 'PAPER') {
-      console.log('You win! Scissors beats paper');
+      document.getElementById('results').innerHTML = ('You win! Scissors beats paper');
       return 1;
   } else if(playerSelection === 'SCISSORS' && computerSelection == 'ROCK') {
-      console.log('You lose! Rock beats Scissors');
+      document.getElementById('results').innerHTML = ('You lose! Rock beats Scissors');
       return 0;
   } else if(playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
-      console.log('You lose! Scissors beats paper');
+      document.getElementById('results').innerHTML = ('You lose! Scissors beats paper');
       return 0;
   } else if(playerSelection === 'ROCK' && computerSelection === 'PAPER') {
-      console.log('You lose! Paper beats Rock');
+      document.getElementById('results').innerHTML = ('You lose! Paper beats Rock');
       return 0;
   } else {
-      console.log('Invalid choice. You lose this round')
+      document.getElementById('results').innerHTML = ('Invalid choice. You lose this round')
     return 0;
   }
 }
@@ -49,13 +51,12 @@ function game() {
     winCount += playRound(playerSelection, computerSelection);
   }
   if (winCount >= 3) {
-    console.log('You win this 5 round game!');
+    document.getElementById('results').innerHTML = ('You win this 5 round game!');
   } else {
-    console.log('You lost this 5 round game!');
+    document.getElementById('results').innerHTML = ('You lost this 5 round game!');
   }
 }
 
-let winCount = 0;
 
 const selections = Array.from(document.querySelectorAll("button"));
 selections.forEach(selection => {
