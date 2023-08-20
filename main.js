@@ -21,25 +21,25 @@ function playRound(playerSelection) {
       results.innerHTML = ('Tie! Keep it going!');
       keepScore(0, 0);
   } else if(playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
-      results.innerHTML = ('You win! Rock beats Scissors');
+      results.innerHTML = ('You win! Rock beats Scissors.');
       keepScore(1, 0);
   } else if(playerSelection === 'PAPER' && computerSelection === 'ROCK') {
-      results.innerHTML = ('You win! Paper beats Rock');
+      results.innerHTML = ('You win! Paper beats Rock.');
       keepScore(1, 0);
   } else if(playerSelection === 'SCISSORS' && computerSelection == 'PAPER') {
-      results.innerHTML = ('You win! Scissors beats paper');
+      results.innerHTML = ('You win! Scissors beats Paper.');
       keepScore(1, 0);
   } else if(playerSelection === 'SCISSORS' && computerSelection == 'ROCK') {
-      results.innerHTML = ('You lose! Rock beats Scissors');
+      results.innerHTML = ('You lose! Rock beats Scissors.');
       keepScore(0, 1);
   } else if(playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
-      results.innerHTML = ('You lose! Scissors beats paper');
+      results.innerHTML = ('You lose! Scissors beats Paper.');
       keepScore(0, 1);
   } else if(playerSelection === 'ROCK' && computerSelection === 'PAPER') {
-      results.innerHTML = ('You lose! Paper beats Rock');
+      results.innerHTML = ('You lose! Paper beats Rock.');
       keepScore(0, 1);
   } else {
-      results.innerHTML = ('Invalid choice. You lose this round')
+      results.innerHTML = ('Invalid choice. You lose this round.')
   }
 }
 
@@ -52,9 +52,11 @@ function keepScore(playerPoint, computerPoint) {
 
   if (playerScore >= 5) {
     results.innerHTML = ('You win this 5 round game!');
+    results.appendChild(scores);
     resetButtons();
   } else if (computerScore >= 5){
     results.innerHTML = ('The Computer won this 5 round game!');
+    results.appendChild(scores);
     resetButtons();
   }
 }
