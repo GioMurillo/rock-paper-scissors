@@ -53,7 +53,9 @@ function playRound(playerSelection) {
 function keepScore(playerPoint, computerPoint) {
   playerScore += playerPoint;
   computerScore += computerPoint;
-  document.getElementById('results').innerHTML += `\nPlayer score: ${playerScore} | Computer score: ${computerScore}`;
+  let scores = document.createElement('p');
+  scores.textContent = `Player score: ${playerScore} | Computer score: ${computerScore}`
+  document.getElementById('results').appendChild(scores);
 
   if (playerScore >= 5) {
     document.getElementById('results').innerHTML = ('You win this 5 round game!');
