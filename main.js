@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+let results = document.getElementById('results');
 
 function getComputerChoice() {
   let computerChoice = Math.floor(Math.random() * 3) + 1;
@@ -17,36 +18,28 @@ function getComputerChoice() {
 function playRound(playerSelection) {
   let computerSelection = getComputerChoice();
   if(playerSelection === computerSelection) {
-      document.getElementById('results').innerHTML = ('Tie! Keep it going!');
+      results.innerHTML = ('Tie! Keep it going!');
       keepScore(0, 0);
-      return 0;
   } else if(playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
-      document.getElementById('results').innerHTML = ('You win! Rock beats Scissors');
+      results.innerHTML = ('You win! Rock beats Scissors');
       keepScore(1, 0);
-      return 1;
   } else if(playerSelection === 'PAPER' && computerSelection === 'ROCK') {
-      document.getElementById('results').innerHTML = ('You win! Paper beats Rock');
+      results.innerHTML = ('You win! Paper beats Rock');
       keepScore(1, 0);
-      return 1;
   } else if(playerSelection === 'SCISSORS' && computerSelection == 'PAPER') {
-      document.getElementById('results').innerHTML = ('You win! Scissors beats paper');
+      results.innerHTML = ('You win! Scissors beats paper');
       keepScore(1, 0);
-      return 1;
   } else if(playerSelection === 'SCISSORS' && computerSelection == 'ROCK') {
-      document.getElementById('results').innerHTML = ('You lose! Rock beats Scissors');
+      results.innerHTML = ('You lose! Rock beats Scissors');
       keepScore(0, 1);
-      return 0;
   } else if(playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
-      document.getElementById('results').innerHTML = ('You lose! Scissors beats paper');
+      results.innerHTML = ('You lose! Scissors beats paper');
       keepScore(0, 1);
-      return 0;
   } else if(playerSelection === 'ROCK' && computerSelection === 'PAPER') {
-      document.getElementById('results').innerHTML = ('You lose! Paper beats Rock');
+      results.innerHTML = ('You lose! Paper beats Rock');
       keepScore(0, 1);
-      return 0;
   } else {
-      document.getElementById('results').innerHTML = ('Invalid choice. You lose this round')
-    return 0;
+      results.innerHTML = ('Invalid choice. You lose this round')
   }
 }
 
@@ -55,20 +48,35 @@ function keepScore(playerPoint, computerPoint) {
   computerScore += computerPoint;
   let scores = document.createElement('p');
   scores.textContent = `Player score: ${playerScore} | Computer score: ${computerScore}`
-  document.getElementById('results').appendChild(scores);
+  results.appendChild(scores);
 
   if (playerScore >= 5) {
-    document.getElementById('results').innerHTML = ('You win this 5 round game!');
-    resetGame();
+    results.innerHTML = ('You win this 5 round game!');
+    resetButtons();
   } else if (computerScore >= 5){
-    document.getElementById('results').innerHTML = ('The Computer won this 5 round game!');
-    resetGame();
+    results.innerHTML = ('The Computer won this 5 round game!');
+    resetButtons();
   }
 }
   
-function resetGame(){
+function resetButtons(){
   selections.forEach(selection => {
     selection.type = 'reset';
+    console.log(selection.type);
+  })
+  const resetSelections = Array.from(document.querySelectorAll('[type=reset]'));
+  console.log(resetSelections);
+  resetSelections.forEach(selection => {
+    selection.addEventListener('click', e => resetGame(e.target.value));
+});
+}
+
+function resetGame(e) {
+  playerScore = 0;
+  computerScore = 0;
+  results.innerHTML = ('');
+  selections.forEach(selection => {
+    selection.type = 'button';
     console.log(selection.type);
   })
 }
