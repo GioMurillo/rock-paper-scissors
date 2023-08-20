@@ -1,6 +1,8 @@
 let playerScore = 0;
 let computerScore = 0;
+const loadScreenText = document.querySelector('results');
 let results = document.getElementById('results');
+
 
 function getComputerChoice() {
   let computerChoice = Math.floor(Math.random() * 3) + 1;
@@ -61,31 +63,27 @@ function keepScore(playerPoint, computerPoint) {
   }
 }
   
-function resetButtons(){
-  selections.forEach(selection => {
-    selection.type = 'reset';
-    console.log(selection.type);
-  })
-  const resetSelections = Array.from(document.querySelectorAll('[type=reset]'));
-  console.log(resetSelections);
-  resetSelections.forEach(selection => {
-    selection.addEventListener('click', e => resetGame(e.target.value));
-});
-}
-
-function resetGame(e) {
-  playerScore = 0;
-  computerScore = 0;
-  results.innerHTML = ('');
-  selections.forEach(selection => {
-    selection.type = 'button';
-    console.log(selection.type);
-  })
-}
-
-
 const selections = Array.from(document.querySelectorAll("button"));
 selections.forEach(selection => {
   selection.addEventListener('click', e => playRound(e.target.value));
 });
 
+function resetButtons(){
+  selections.forEach(selection => {
+    selection.type = 'reset';
+  })
+  const resetSelections = Array.from(document.querySelectorAll('[type=reset]'));
+  console.log(resetSelections);
+  resetSelections.forEach(selection => {
+    selection.addEventListener('click', e => resetGame());
+});
+}
+
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+  results.innerHTML = (loadScreenText);
+  selections.forEach(selection => {
+    selection.type = 'button';
+  })
+}
