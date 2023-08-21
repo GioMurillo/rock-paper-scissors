@@ -82,7 +82,7 @@ function resetButtons(){
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
-  results.innerHTML = (loadScreenText);
+  results.innerHTML = (loadScreenText.innerHTML);
   selections.forEach(selection => {
     selection.type = 'button';
   })
