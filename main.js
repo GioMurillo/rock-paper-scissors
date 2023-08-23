@@ -1,14 +1,18 @@
 let playerScore = 0;
 let computerScore = 0;
 let results = document.getElementById('results');
+const selections = Array.from(document.querySelectorAll("button"));
 
 window.onload = (e) => startScreen();
 
-function startScreen(){
+function startScreen() {
   results.innerHTML = 'Welcome Player!';
   const startText = document.createElement('p');
   startText.textContent = 'Make your selection to start the game.'
   results.appendChild(startText);
+  selections.forEach(selection => {
+    selection.addEventListener('click', e => playRound(e.target.value));
+  });
 }
 
 function getComputerChoice() {
@@ -55,27 +59,24 @@ function playRound(playerSelection) {
 function keepScore(playerPoint, computerPoint) {
   playerScore += playerPoint;
   computerScore += computerPoint;
-  let scores = document.createElement('p');
+  const scores = document.createElement('p');
   scores.textContent = `Player score: ${playerScore} | Computer score: ${computerScore}`
   results.appendChild(scores);
   if (playerScore >= 5) {
     results.innerHTML = ('You win this 5 round game!');
     results.appendChild(scores);
     resetGame();
-  } else if (computerScore >= 5){
+  } else if (computerScore >= 5) {
     results.innerHTML = ('The Computer won this 5 round game!');
     results.appendChild(scores);
     resetGame();
   }
 }
   
-const selections = Array.from(document.querySelectorAll("button"));
-selections.forEach(selection => {
-  selection.addEventListener('click', e => playRound(e.target.value));
-});
+
+
 
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
-  startScreen();
 }
